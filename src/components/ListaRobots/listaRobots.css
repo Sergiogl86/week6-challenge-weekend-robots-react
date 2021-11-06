@@ -1,0 +1,7 @@
+.listaRobots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 1300px;
+  min-width: 450px;
+}
