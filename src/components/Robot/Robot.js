@@ -3,7 +3,7 @@ import "./robot.css";
 const Robot = ({ robot }) => {
   return (
     <>
-      <li className="robot container list-group-item">
+      <li className="robot container list-group-item" title={robot.nombre}>
         <div className="row align-items-center ">
           <h2 className="col-12 list-group-item active fs-4">{`Nombre: ${robot.nombre}`}</h2>
           <div className="row align-items-center">
