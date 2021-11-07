@@ -1,6 +1,7 @@
 import { rest } from "msw";
 
 const urlApi = process.env.REACT_APP_API_URL;
+const urlApiPost = `${urlApi}create?token=h29D8b23Llm45`;
 
 const robots = [
   {
@@ -57,12 +58,24 @@ const robots = [
   },
 ];
 
+const robot = {
+  caracteristicas: {
+    velocidad: 2,
+    resistencia: 2,
+    FechaCeCreacion: "1986-09-29",
+  },
+  nombre: "Prueba",
+  imagenUrl: "https://dbdzm869oupei.cloudfront.net/img/sticker/large/8340.jpg",
+  __v: 0,
+  id: "6187ac37a9bc8839ef6c4b92",
+};
+
 const handlers = [
   rest.get(urlApi, (req, res, ctx) => {
     return res(ctx.json(robots));
   }),
-  rest.post(urlApi, (req, res, ctx) => {
-    return res(ctx.json({ id: 100, ...req.body }));
+  rest.post(urlApiPost, (req, res, ctx) => {
+    return res(ctx.json(robot));
   }),
 ];
 
