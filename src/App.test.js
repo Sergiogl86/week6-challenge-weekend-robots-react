@@ -40,7 +40,7 @@ describe("Given an App component", () => {
         name: "Nombre: Prueba",
       });
 
-      await screen.debug();
+      screen.debug();
 
       expect(nuevoRobot).toBeInTheDocument();
     });
@@ -98,7 +98,7 @@ describe("Given an App component", () => {
         name: "Nombre: PruebaUpdate",
       });
 
-      await screen.debug();
+      screen.debug();
 
       expect(nuevoRobot).toBeInTheDocument();
     });
