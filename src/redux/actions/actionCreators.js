@@ -14,3 +14,17 @@ export const borrarRobotAction = (id) => ({
   type: actionTypes.deleteRobot,
   id,
 });
+
+export const editarRobotAction = (robot) => ({
+  type: actionTypes.seleccionarRobot,
+  robot,
+});
+
+export const limpiarRobotAction = () => ({
+  type: actionTypes.limpiarRobot,
+});
+
+export const actualizarRobotAction = (robot) => ({
+  type: actionTypes.actualizarRobot,
+  robot,
+});

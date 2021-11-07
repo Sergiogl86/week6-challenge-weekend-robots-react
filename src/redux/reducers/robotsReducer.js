@@ -13,6 +13,15 @@ const robotsReducer = (robots = [], action) => {
     case actionTypes.deleteRobot:
       newRobots = robots.filter((robot) => robot.id !== action.id);
       break;
+    case actionTypes.actualizarRobot:
+      newRobots = robots.map((robot) => {
+        if (robot.id === action.robot.id) {
+          return action.robot;
+        } else {
+          return robot;
+        }
+      });
+      break;
 
     default:
       newRobots = robots;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./robot.css";
 
-const Robot = ({ robot, borrar }) => {
+const Robot = ({ robot, borrar, mostrar }) => {
   const [robotsToken, setRobotsToken] = useState("Token...");
 
   const changeToken = (event) => {
@@ -11,6 +11,12 @@ const Robot = ({ robot, borrar }) => {
   const onclickBorrar = () => {
     borrar(robot.id, robotsToken);
   };
+
+  const onclickEditar = () => {
+    mostrar(robot);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <li className="robot container list-group-item mb-4" title={robot.nombre}>
@@ -22,7 +28,11 @@ const Robot = ({ robot, borrar }) => {
                 <h3 className="fs-6">{`#${robot.id}`}</h3>
               </div>
               <div className="col-4 ms-auto">
-                <button type="button" className="btn btn-info">
+                <button
+                  type="button"
+                  className="btn btn-info"
+                  onClick={onclickEditar}
+                >
                   |Actualizar|
                 </button>
               </div>
