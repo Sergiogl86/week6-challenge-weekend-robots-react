@@ -14,6 +14,7 @@ import {
 const useRobots = () => {
   const robots = useSelector((store) => store.robots);
   const currentRobot = useSelector((store) => store.currentRobot);
+  const error = useSelector((store) => store.error);
 
   const dispatch = useDispatch();
 
@@ -43,6 +44,7 @@ const useRobots = () => {
 
   return {
     robots,
+    error,
     currentRobot,
     mostrarRobots,
     crearRobot,

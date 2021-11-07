@@ -5,6 +5,8 @@ const actionTypes = {
   seleccionarRobot: "SELECT_ROBOT",
   limpiarRobot: "CLEAN_ROBOT",
   actualizarRobot: "UPDATE_ROBOT",
+  actualizarError: "UPDATE_ERROR",
+  todoCorrectoError: "NO_ERROR",
 };
 
 export default actionTypes;

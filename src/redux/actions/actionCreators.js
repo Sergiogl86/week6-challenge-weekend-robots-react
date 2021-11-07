@@ -28,3 +28,12 @@ export const actualizarRobotAction = (robot) => ({
   type: actionTypes.actualizarRobot,
   robot,
 });
+
+export const actualizarErrorAction = (error) => ({
+  type: actionTypes.actualizarError,
+  error,
+});
+
+export const noErrorAction = () => ({
+  type: actionTypes.todoCorrectoError,
+});

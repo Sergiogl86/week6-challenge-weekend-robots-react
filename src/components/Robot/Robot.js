@@ -10,6 +10,7 @@ const Robot = ({ robot, borrar, mostrar }) => {
 
   const onclickBorrar = () => {
     borrar(robot.id, robotsToken);
+    window.scrollTo(0, 0);
   };
 
   const onclickEditar = () => {
