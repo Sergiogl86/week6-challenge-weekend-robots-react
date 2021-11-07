@@ -9,3 +9,8 @@ export const crearRobotAction = (robot) => ({
   type: actionTypes.createRobot,
   robot,
 });
+
+export const borrarRobotAction = (id) => ({
+  type: actionTypes.deleteRobot,
+  id,
+});
