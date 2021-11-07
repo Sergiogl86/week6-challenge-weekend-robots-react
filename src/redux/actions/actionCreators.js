@@ -4,3 +4,8 @@ export const leerRobotsAction = (robots) => ({
   type: actionTypes.loadRobots,
   robots,
 });
+
+export const crearRobotAction = (robot) => ({
+  type: actionTypes.createRobot,
+  robot,
+});

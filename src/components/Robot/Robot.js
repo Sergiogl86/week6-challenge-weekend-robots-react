@@ -3,9 +3,10 @@ import "./robot.css";
 const Robot = ({ robot }) => {
   return (
     <>
-      <li className="robot container list-group-item" title={robot.nombre}>
+      <li className="robot container list-group-item mb-4" title={robot.nombre}>
         <div className="row align-items-center ">
           <h2 className="col-12 list-group-item active fs-4">{`Nombre: ${robot.nombre}`}</h2>
+          <h3 className="col-12 list-group-item fs-6">{`#${robot.id}`}</h3>
           <div className="row align-items-center">
             <div className="col-8">
               <h3 className="fs-6">Caracteristicas:</h3>

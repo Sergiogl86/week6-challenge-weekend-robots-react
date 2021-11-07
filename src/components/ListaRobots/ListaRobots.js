@@ -15,7 +15,7 @@ const ListaRobots = () => {
       <div className="container">
         <ul className="listaRobots">
           {robots.map((robot) => (
-            <Robot robot={robot} key={robot._id} />
+            <Robot robot={robot} key={robot.id} />
           ))}
         </ul>
       </div>
