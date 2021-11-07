@@ -1,5 +1,9 @@
 import actionTypes from "./actionTypes";
-import { crearRobotAction, leerRobotsAction } from "./actionCreators";
+import {
+  crearRobotAction,
+  leerRobotsAction,
+  borrarRobotAction,
+} from "./actionCreators";
 
 describe("Given a load actionCreator", () => {
   describe("When it receives a list of robots", () => {
@@ -60,6 +64,22 @@ describe("Given a crear Action", () => {
       };
 
       const actionResult = crearRobotAction(robot);
+
+      expect(actionResult).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a borrar Action", () => {
+  describe("When it receives a id", () => {
+    test("Then it should return a borrarRobotAction with the id received", () => {
+      const id = 3;
+      const expectedAction = {
+        type: actionTypes.deleteRobot,
+        id: id,
+      };
+
+      const actionResult = borrarRobotAction(id);
 
       expect(actionResult).toEqual(expectedAction);
     });

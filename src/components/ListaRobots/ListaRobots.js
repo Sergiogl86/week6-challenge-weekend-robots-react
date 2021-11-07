@@ -4,7 +4,7 @@ import useRobots from "./../../hooks/useRobots";
 import { useEffect } from "react";
 
 const ListaRobots = () => {
-  const { robots, mostrarRobots } = useRobots();
+  const { robots, mostrarRobots, borrarRobot } = useRobots();
 
   useEffect(() => {
     mostrarRobots();
@@ -15,7 +15,7 @@ const ListaRobots = () => {
       <div className="container">
         <ul className="listaRobots">
           {robots.map((robot) => (
-            <Robot robot={robot} key={robot.id} />
+            <Robot robot={robot} borrar={borrarRobot} key={robot.id} />
           ))}
         </ul>
       </div>

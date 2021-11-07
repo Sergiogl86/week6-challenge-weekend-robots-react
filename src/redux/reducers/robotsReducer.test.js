@@ -2,6 +2,7 @@ import robotsReducer from "./robotsReducer";
 import {
   crearRobotAction,
   leerRobotsAction,
+  borrarRobotAction,
 } from "./../actions/actionCreators";
 
 describe("Given a robotsReducer reducer", () => {
@@ -15,7 +16,7 @@ describe("Given a robotsReducer reducer", () => {
             resistencia: 7,
             FechaCeCreacion: "12-05-2018",
           },
-          _id: "61858347666bcb02723c195d",
+          id: "61858347666bcb02723c195d",
           nombre: "WALL·E 2",
           imagenUrl:
             "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -26,7 +27,7 @@ describe("Given a robotsReducer reducer", () => {
             resistencia: 7,
             FechaCeCreacion: "12-05-2018",
           },
-          _id: "61858354666bcb02723c195e",
+          id: "61858354666bcb02723c195e",
           nombre: "WALL·E 3",
           imagenUrl:
             "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -48,7 +49,7 @@ describe("Given a robotsReducer reducer", () => {
             resistencia: 7,
             FechaCeCreacion: "12-05-2018",
           },
-          _id: "61858347666bcb02723c195d",
+          id: "61858347666bcb02723c195d",
           nombre: "WALL·E 2",
           imagenUrl:
             "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -60,7 +61,7 @@ describe("Given a robotsReducer reducer", () => {
           resistencia: 7,
           FechaCeCreacion: "12-05-2018",
         },
-        _id: "61858354666bcb02723c195e",
+        id: "61858354666bcb02723c195e",
         nombre: "WALL·E 3",
         imagenUrl:
           "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -73,7 +74,7 @@ describe("Given a robotsReducer reducer", () => {
             resistencia: 7,
             FechaCeCreacion: "12-05-2018",
           },
-          _id: "61858347666bcb02723c195d",
+          id: "61858347666bcb02723c195d",
           nombre: "WALL·E 2",
           imagenUrl:
             "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -84,7 +85,7 @@ describe("Given a robotsReducer reducer", () => {
             resistencia: 7,
             FechaCeCreacion: "12-05-2018",
           },
-          _id: "61858354666bcb02723c195e",
+          id: "61858354666bcb02723c195e",
           nombre: "WALL·E 3",
           imagenUrl:
             "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
@@ -92,6 +93,55 @@ describe("Given a robotsReducer reducer", () => {
       ];
 
       const action = crearRobotAction(robot);
+
+      const newList = robotsReducer(initialRobots, action);
+
+      expect(newList).toEqual(expectedList);
+    });
+  });
+  describe("When it receives an list of robots and a borrar Robot actio with a id", () => {
+    test("Then it should return a new challenge list with a robot deleted", () => {
+      const initialRobots = [
+        {
+          caracteristicas: {
+            velocidad: 5,
+            resistencia: 7,
+            FechaCeCreacion: "12-05-2018",
+          },
+          id: "61858347666bcb02723c195d",
+          nombre: "WALL·E 2",
+          imagenUrl:
+            "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
+        },
+        {
+          caracteristicas: {
+            velocidad: 6,
+            resistencia: 7,
+            FechaCeCreacion: "12-05-2018",
+          },
+          id: "61858354666bcb02723c195e",
+          nombre: "WALL·E 3",
+          imagenUrl:
+            "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
+        },
+      ];
+      const id = "61858354666bcb02723c195e";
+
+      const expectedList = [
+        {
+          caracteristicas: {
+            velocidad: 5,
+            resistencia: 7,
+            FechaCeCreacion: "12-05-2018",
+          },
+          id: "61858347666bcb02723c195d",
+          nombre: "WALL·E 2",
+          imagenUrl:
+            "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
+        },
+      ];
+
+      const action = borrarRobotAction(id);
 
       const newList = robotsReducer(initialRobots, action);
 
