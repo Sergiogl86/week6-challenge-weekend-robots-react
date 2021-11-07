@@ -22,14 +22,12 @@ afterAll(() => {
 describe("Given an App component", () => {
   describe("When the user creates a robot", () => {
     test("Then it should show the new robot", async () => {
-      const nombre = screen.getByPlaceholderText("nombre...");
-      const velocidad = screen.getByPlaceholderText("velocidad...");
-      const resistecia = screen.getByPlaceholderText("resistecia...");
-      const token = screen.getByPlaceholderText("Token...");
+      const nombre = screen.getByTestId("nombre");
+      const velocidad = screen.getByTestId("velocidad");
+      const resistecia = screen.getByTestId("resistencia");
+      const token = screen.getByTestId("token");
 
-      const submit = screen.getByRole("button", {
-        name: "| Crear Robots |",
-      });
+      const submit = screen.getByTestId("submit");
 
       userEvent.type(nombre, "Prueba");
       userEvent.type(velocidad, "2");
@@ -69,6 +67,40 @@ describe("Given an App component", () => {
       );
 
       expect(Robot[0]).not.toBeInTheDocument();
+    });
+  });
+  describe("When the user update a robot", () => {
+    test("Then it should show the robot update", async () => {
+      const Robot = await screen.findAllByRole("listitem", {
+        name: "PruebaDelete",
+      });
+      const actualizarRobot = within(Robot[0]).getByRole("button", {
+        name: "|Actualizar|",
+      });
+
+      userEvent.click(actualizarRobot);
+
+      const nombre = screen.getByTestId("nombre");
+      const velocidad = screen.getByTestId("velocidad");
+      const resistecia = screen.getByTestId("resistencia");
+      const token = screen.getByTestId("token");
+
+      const submit = screen.getByTestId("submit");
+
+      userEvent.type(nombre, "PruebaUpdate");
+      userEvent.type(velocidad, "8");
+      userEvent.type(resistecia, "8");
+      userEvent.type(token, "h29D8b23Llm45");
+
+      userEvent.click(submit);
+
+      const nuevoRobot = await screen.findByRole("heading", {
+        name: "Nombre: PruebaUpdate",
+      });
+
+      await screen.debug();
+
+      expect(nuevoRobot).toBeInTheDocument();
     });
   });
 });
