@@ -2,8 +2,21 @@ import { rest } from "msw";
 
 const urlApi = process.env.REACT_APP_API_URL;
 const urlApiPost = `${urlApi}create?token=h29D8b23Llm45`;
+const urlApiDelete = `${urlApi}delete/6187ac37a9bc8866ef6c4b92?token=h29D8b23Llm45`;
 
 const robots = [
+  {
+    caracteristicas: {
+      velocidad: 2,
+      resistencia: 2,
+      FechaCeCreacion: "1986-09-29",
+    },
+    nombre: "PruebaDelete",
+    imagenUrl:
+      "https://dbdzm869oupei.cloudfront.net/img/sticker/large/8340.jpg",
+    __v: 0,
+    id: "6187ac37a9bc8866ef6c4b92",
+  },
   {
     caracteristicas: {
       velocidad: 5,
@@ -11,7 +24,7 @@ const robots = [
       FechaCeCreacion: "12-05-2018",
     },
     _id: "61858347666bcb02723c195d",
-    nombre: "WALL·E 2",
+    nombre: "WALL·E 22",
     imagenUrl: "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
   },
   {
@@ -76,6 +89,9 @@ const handlers = [
   }),
   rest.post(urlApiPost, (req, res, ctx) => {
     return res(ctx.json(robot));
+  }),
+  rest.delete(urlApiDelete, (req, res, ctx) => {
+    return res(ctx.json({ id: "6187ac37a9bc8866ef6c4b92" }));
   }),
 ];
 
