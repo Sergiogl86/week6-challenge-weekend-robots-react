@@ -72,6 +72,7 @@ const FormularioRobots = () => {
             <div className="row align-items-center ">
               <h2 className="col-12 list-group-item active fs-4">
                 <input
+                  data-testid="nombre"
                   type="text"
                   value={robotsFormulario.nombre}
                   id="nombre"
@@ -90,6 +91,7 @@ const FormularioRobots = () => {
                       type="number"
                       value={robotsFormulario.caracteristicas.velocidad}
                       id="velocidad"
+                      data-testid="velocidad"
                       className="form-control"
                       placeholder={robotsFormulario.caracteristicas.velocidad}
                       autoComplete="off"
@@ -104,6 +106,7 @@ const FormularioRobots = () => {
                       type="number"
                       value={robotsFormulario.caracteristicas.resistencia}
                       id="resistencia"
+                      data-testid="resistencia"
                       className="form-control"
                       placeholder={robotsFormulario.caracteristicas.resistencia}
                       autoComplete="off"
@@ -118,6 +121,7 @@ const FormularioRobots = () => {
                       type="date"
                       value={robotsFormulario.caracteristicas.FechaCeCreacion}
                       id="FechaCeCreacion"
+                      data-testid="FechaCeCreacion"
                       className="form-control"
                       placeholder={
                         robotsFormulario.caracteristicas.FechaCeCreacion
@@ -139,6 +143,7 @@ const FormularioRobots = () => {
                     type="text"
                     value={robotsFormulario.imagenUrl}
                     id="imagenUrl"
+                    data-testid="imagenUrl"
                     className="form-control"
                     placeholder={robotsFormulario.imagenUrl}
                     autoComplete="off"
@@ -153,6 +158,7 @@ const FormularioRobots = () => {
                 <div className="col-5">
                   <button
                     type="submit"
+                    data-testid="submit"
                     className={
                       robotsFormulario.id ? "btn btn-info" : "btn btn-success"
                     }
@@ -168,6 +174,7 @@ const FormularioRobots = () => {
                       type="text"
                       value={robotsToken}
                       id="token"
+                      data-testid="token"
                       className="form-control"
                       placeholder={robotsToken}
                       autoComplete="off"
