@@ -1,6 +1,7 @@
 import "./App.css";
 import ListaRobots from "./components/ListaRobots/ListaRobots";
 import FormularioRobots from "./components/FormularioRobots/FormularioRobots";
+import Consola from "./components/Consola/Consola";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       </header>
 
       <FormularioRobots />
+      <Consola />
       <ListaRobots />
     </>
   );

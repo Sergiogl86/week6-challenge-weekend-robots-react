@@ -7,8 +7,8 @@ const FormularioRobots = () => {
 
   const robotVacio = {
     caracteristicas: {
-      velocidad: "velocidad...",
-      resistencia: "resistecia...",
+      velocidad: "velocidad...0-10",
+      resistencia: "resistecia...0-10",
       FechaCeCreacion: "",
     },
     nombre: "nombre...",
