@@ -1,7 +1,11 @@
 import server from "./mocks/server";
 import renderWithProviders from "./components/test-utils";
 import App from "./App";
-import { screen } from "@testing-library/react";
+import {
+  screen,
+  waitForElementToBeRemoved,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 beforeAll(() => {
@@ -41,6 +45,30 @@ describe("Given an App component", () => {
       await screen.debug();
 
       expect(nuevoRobot).toBeInTheDocument();
+    });
+  });
+  describe("When the user deletes a robot", () => {
+    test("Then it shouldn't show the robot deleted", async () => {
+      const Robot = await screen.findAllByRole("listitem", {
+        name: "PruebaDelete",
+      });
+      const nombre = within(Robot[0]).getByRole("heading", {
+        name: "Nombre: PruebaDelete",
+      });
+      const token = within(Robot[0]).getByPlaceholderText("Token...");
+      const borrarRobot = within(Robot[0]).getByRole("button", {
+        name: "| Borrar |",
+      });
+
+      userEvent.type(token, "h29D8b23Llm45");
+
+      userEvent.click(borrarRobot);
+
+      await waitForElementToBeRemoved(() =>
+        screen.getByText(nombre.textContent)
+      );
+
+      expect(Robot[0]).not.toBeInTheDocument();
     });
   });
 });
