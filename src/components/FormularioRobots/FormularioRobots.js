@@ -1,9 +1,9 @@
 import "./formularioRobots.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useRobots from "./../../hooks/useRobots";
 
 const FormularioRobots = () => {
-  const { crearRobot } = useRobots();
+  const { crearRobot, currentRobot, limpiarRobotEditar } = useRobots();
 
   const robotVacio = {
     caracteristicas: {
@@ -18,6 +18,12 @@ const FormularioRobots = () => {
 
   const [robotsFormulario, setRobotsFormulario] = useState(robotVacio);
   const [robotsToken, setRobotsToken] = useState("Token...");
+
+  useEffect(() => {
+    if (currentRobot.id !== "") {
+      setRobotsFormulario(currentRobot);
+    }
+  }, [currentRobot]);
 
   const changeRobot = (event) => {
     if (event.target.id === "nombre" || event.target.id === "imagenUrl") {
@@ -44,6 +50,14 @@ const FormularioRobots = () => {
     event.preventDefault();
     crearRobot(robotsFormulario, robotsToken);
     setRobotsFormulario(robotVacio);
+    limpiarRobotEditar();
+    setRobotsToken("Token...");
+  };
+
+  const limpiarOnClick = (event) => {
+    event.preventDefault();
+    setRobotsFormulario(robotVacio);
+    limpiarRobotEditar();
     setRobotsToken("Token...");
   };
 
@@ -137,8 +151,15 @@ const FormularioRobots = () => {
             <div className="list-group-item mt-3">
               <div className="row align-items-center">
                 <div className="col-5">
-                  <button type="submit" className="btn btn-primary">
-                    | Crear Robots |
+                  <button
+                    type="submit"
+                    className={
+                      robotsFormulario.id ? "btn btn-info" : "btn btn-success"
+                    }
+                  >
+                    {robotsFormulario.id
+                      ? "| Editar Robot |"
+                      : "| Crear Robots |"}
                   </button>
                 </div>
                 <div className="col-7">
@@ -156,6 +177,11 @@ const FormularioRobots = () => {
                   </h4>
                 </div>
               </div>
+            </div>
+            <div className="list-group-item mt-3">
+              <button className="btn btn-primary" onClick={limpiarOnClick}>
+                | Limpiar |
+              </button>
             </div>
           </li>
         </form>

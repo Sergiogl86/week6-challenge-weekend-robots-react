@@ -16,7 +16,7 @@ describe("Given a Robot component", () => {
           "https://iresiduo.com/sites/default/files/images/08-Wall-E.jpg",
       };
 
-      render(<Robot robot={robot} borrar={() => {}} />);
+      render(<Robot robot={robot} borrar={() => {}} mostrar={() => {}} />);
 
       screen.debug();
 
