@@ -134,7 +134,7 @@ const FormularioRobots = () => {
                 </div>
               </div>
             </div>
-            <div className="list-group-item">
+            <div className="list-group-item mt-3">
               <div className="row align-items-center">
                 <div className="col-5">
                   <button type="submit" className="btn btn-primary">
