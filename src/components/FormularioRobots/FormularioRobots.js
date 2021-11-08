@@ -7,17 +7,17 @@ const FormularioRobots = () => {
 
   const robotVacio = {
     caracteristicas: {
-      velocidad: "velocidad...0-10",
-      resistencia: "resistecia...0-10",
+      velocidad: "",
+      resistencia: "",
       FechaCeCreacion: "",
     },
-    nombre: "nombre...",
+    nombre: "",
     imagenUrl:
       "https://cloud.educaplay.com/recursos/131/4221007/imagen_1_1546953112.jpg",
   };
 
   const [robotsFormulario, setRobotsFormulario] = useState(robotVacio);
-  const [robotsToken, setRobotsToken] = useState("Token...");
+  const [robotsToken, setRobotsToken] = useState("");
 
   useEffect(() => {
     if (currentRobot.id !== "") {
@@ -51,14 +51,14 @@ const FormularioRobots = () => {
     crearRobot(robotsFormulario, robotsToken);
     setRobotsFormulario(robotVacio);
     limpiarRobotEditar();
-    setRobotsToken("Token...");
+    setRobotsToken("");
   };
 
   const limpiarOnClick = (event) => {
     event.preventDefault();
     setRobotsFormulario(robotVacio);
     limpiarRobotEditar();
-    setRobotsToken("Token...");
+    setRobotsToken("");
   };
 
   return (
@@ -77,7 +77,7 @@ const FormularioRobots = () => {
                   value={robotsFormulario.nombre}
                   id="nombre"
                   className="form-control"
-                  placeholder={robotsFormulario.nombre}
+                  placeholder="nombre..."
                   autoComplete="off"
                   onChange={changeRobot}
                   required
@@ -93,7 +93,7 @@ const FormularioRobots = () => {
                       id="velocidad"
                       data-testid="velocidad"
                       className="form-control"
-                      placeholder={robotsFormulario.caracteristicas.velocidad}
+                      placeholder="velocidad...0-10"
                       autoComplete="off"
                       onChange={changeRobot}
                       min="0"
@@ -108,7 +108,7 @@ const FormularioRobots = () => {
                       id="resistencia"
                       data-testid="resistencia"
                       className="form-control"
-                      placeholder={robotsFormulario.caracteristicas.resistencia}
+                      placeholder="resistecia...0-10"
                       autoComplete="off"
                       onChange={changeRobot}
                       min="0"
@@ -176,7 +176,7 @@ const FormularioRobots = () => {
                       id="token"
                       data-testid="token"
                       className="form-control"
-                      placeholder={robotsToken}
+                      placeholder="Token..."
                       autoComplete="off"
                       onChange={changeToken}
                       required
