@@ -1,15 +1,8 @@
-import { useState } from "react";
 import "./robot.css";
 
 const Robot = ({ robot, borrar, mostrar }) => {
-  const [robotsToken, setRobotsToken] = useState("Token...");
-
-  const changeToken = (event) => {
-    setRobotsToken(event.target.value);
-  };
-
   const onclickBorrar = () => {
-    borrar(robot.id, robotsToken);
+    borrar(robot.id);
     window.scrollTo(0, 0);
   };
 
@@ -67,20 +60,6 @@ const Robot = ({ robot, borrar, mostrar }) => {
               >
                 | Borrar |
               </button>
-            </div>
-            <div className="col-8">
-              <h4 className="fs-6 m-0 ms-4">
-                <input
-                  type="text"
-                  value={robotsToken}
-                  id="token"
-                  className="form-control"
-                  placeholder={robotsToken}
-                  autoComplete="off"
-                  onChange={changeToken}
-                  required
-                />
-              </h4>
             </div>
           </div>
         </div>

@@ -22,16 +22,16 @@ const useRobots = () => {
     dispatch(mostrarRobotsThunk());
   }, [dispatch]);
 
-  const crearRobot = (robot, token) => {
+  const crearRobot = (robot) => {
     if (robot.id) {
-      dispatch(editarRobotThunk(robot, token));
+      dispatch(editarRobotThunk(robot));
     } else {
-      dispatch(crearRobotThunk(robot, token));
+      dispatch(crearRobotThunk(robot));
     }
   };
 
-  const borrarRobot = (idRobot, token) => {
-    dispatch(borrarRobotThunk(idRobot, token));
+  const borrarRobot = (idRobot) => {
+    dispatch(borrarRobotThunk(idRobot));
   };
 
   const mostrarRobotEditar = (robot) => {
