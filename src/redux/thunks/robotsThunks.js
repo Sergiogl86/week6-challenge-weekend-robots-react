@@ -9,11 +9,14 @@ import {
 } from "../actions/actionCreators";
 
 const urlApi = process.env.REACT_APP_API_URL;
+const token = localStorage.getItem("userToken");
 
 export const mostrarRobotsThunk = () => {
   return async (dispatch) => {
     try {
-      const { data: robots } = await axios.get(urlApi);
+      const { data: robots } = await axios.get(urlApi, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       dispatch(leerRobotsAction(robots));
       dispatch(noErrorAction());
     } catch (error) {
