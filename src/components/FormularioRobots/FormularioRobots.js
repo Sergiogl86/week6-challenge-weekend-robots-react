@@ -134,10 +134,9 @@ const FormularioRobots = () => {
                 </div>
                 <div className="col-5 align-self-center">
                   <img
-                    className="rounded-end"
+                    className="rounded-end robotImagen"
                     src={robotsFormulario.imagenUrl}
                     alt={`Imagen de ${robotsFormulario.nombre}`}
-                    height="150"
                   />
                   <input
                     type="text"

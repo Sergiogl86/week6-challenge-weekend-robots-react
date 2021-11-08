@@ -49,10 +49,9 @@ const Robot = ({ robot, borrar, mostrar }) => {
               </div>
               <div className="col-4 align-self-center">
                 <img
-                  className="rounded-end"
+                  className="rounded-end robotImagen"
                   src={robot.imagenUrl}
                   alt={`Imagen de ${robot.nombre}`}
-                  height="140"
                 />
               </div>
             </div>
