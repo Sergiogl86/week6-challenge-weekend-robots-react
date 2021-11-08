@@ -17,7 +17,6 @@ const FormularioRobots = () => {
   };
 
   const [robotsFormulario, setRobotsFormulario] = useState(robotVacio);
-  const [robotsToken, setRobotsToken] = useState("");
 
   useEffect(() => {
     if (currentRobot.id !== "") {
@@ -42,23 +41,17 @@ const FormularioRobots = () => {
     }
   };
 
-  const changeToken = (event) => {
-    setRobotsToken(event.target.value);
-  };
-
   const onSubmitRobot = (event) => {
     event.preventDefault();
-    crearRobot(robotsFormulario, robotsToken);
+    crearRobot(robotsFormulario);
     setRobotsFormulario(robotVacio);
     limpiarRobotEditar();
-    setRobotsToken("");
   };
 
   const limpiarOnClick = (event) => {
     event.preventDefault();
     setRobotsFormulario(robotVacio);
     limpiarRobotEditar();
-    setRobotsToken("");
   };
 
   return (
@@ -166,21 +159,6 @@ const FormularioRobots = () => {
                       ? "| Editar Robot |"
                       : "| Crear Robots |"}
                   </button>
-                </div>
-                <div className="col-7">
-                  <h4 className="fs-6 m-0">
-                    <input
-                      type="text"
-                      value={robotsToken}
-                      id="token"
-                      data-testid="token"
-                      className="form-control"
-                      placeholder="Token..."
-                      autoComplete="off"
-                      onChange={changeToken}
-                      required
-                    />
-                  </h4>
                 </div>
               </div>
             </div>

@@ -2,7 +2,6 @@ import actionTypes from "../actions/actionTypes";
 
 const errorReducer = (Error = { error: "Todo correcto!" }, action) => {
   let newError;
-
   switch (action.type) {
     case actionTypes.actualizarError:
       newError = { ...action.error };

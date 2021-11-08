@@ -12,17 +12,21 @@ const urlApi = process.env.REACT_APP_API_URL;
 
 export const mostrarRobotsThunk = () => {
   return async (dispatch) => {
-    const { data: robots } = await axios.get(urlApi);
-    dispatch(leerRobotsAction(robots));
+    try {
+      const { data: robots } = await axios.get(urlApi);
+      dispatch(leerRobotsAction(robots));
+      dispatch(noErrorAction());
+    } catch (error) {
+      dispatch(actualizarErrorAction({ error: error.response.data.error }));
+    }
   };
 };
 
-export const crearRobotThunk = (createrobot, token) => {
+export const crearRobotThunk = (createrobot) => {
   return async (dispatch) => {
-    const crearUrl = `${urlApi}create?token=${token}`;
+    const crearUrl = `${urlApi}create`;
     try {
       const { data: robot } = await axios.post(crearUrl, createrobot);
-      debugger;
       if (robot.error) {
         dispatch(actualizarErrorAction(robot));
       } else {
@@ -30,21 +34,16 @@ export const crearRobotThunk = (createrobot, token) => {
         dispatch(noErrorAction());
       }
     } catch (error) {
-      debugger;
-      dispatch(
-        actualizarErrorAction({
-          error: "Datos erroneos!",
-        })
-      );
+      dispatch(actualizarErrorAction({ error: error.response.data.error }));
     }
   };
 };
 
-export const borrarRobotThunk = (idRobot, token) => {
+export const borrarRobotThunk = (idRobot) => {
   return async (dispatch) => {
-    const crearUrl = `${urlApi}delete/${idRobot}?token=${token}`;
+    const crearUrl = `${urlApi}delete/${idRobot}`;
     const { data } = await axios.delete(crearUrl);
-    debugger;
+
     if (data.error) {
       dispatch(actualizarErrorAction(data));
     } else {
@@ -54,12 +53,12 @@ export const borrarRobotThunk = (idRobot, token) => {
   };
 };
 
-export const editarRobotThunk = (editarRobot, token) => {
+export const editarRobotThunk = (editarRobot) => {
   return async (dispatch) => {
-    const crearUrl = `${urlApi}update?token=${token}`;
+    const crearUrl = `${urlApi}update`;
     try {
       const { data: robotActualizado } = await axios.put(crearUrl, editarRobot);
-      debugger;
+
       if (robotActualizado.error) {
         dispatch(actualizarErrorAction(robotActualizado));
       } else {
@@ -67,12 +66,7 @@ export const editarRobotThunk = (editarRobot, token) => {
         dispatch(noErrorAction());
       }
     } catch (error) {
-      debugger;
-      dispatch(
-        actualizarErrorAction({
-          error: "Datos erroneos!",
-        })
-      );
+      dispatch(actualizarErrorAction({ error: error.response.data.error }));
     }
   };
 };
