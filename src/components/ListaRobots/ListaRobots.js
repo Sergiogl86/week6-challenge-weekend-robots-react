@@ -1,7 +1,7 @@
 import "./listaRobots.css";
 import Robot from "../Robot/Robot";
 import useRobots from "./../../hooks/useRobots";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import useUser from "./../../hooks/useUser";
 
 const ListaRobots = () => {
