@@ -9,11 +9,11 @@ import {
 } from "../actions/actionCreators";
 
 const urlApi = process.env.REACT_APP_API_URL;
-const token = localStorage.getItem("userToken");
 
 export const mostrarRobotsThunk = () => {
   return async (dispatch) => {
     try {
+      const token = localStorage.getItem("userToken");
       const { data: robots } = await axios.get(urlApi, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -29,7 +29,11 @@ export const crearRobotThunk = (createrobot) => {
   return async (dispatch) => {
     const crearUrl = `${urlApi}create`;
     try {
-      const { data: robot } = await axios.post(crearUrl, createrobot);
+      const token = localStorage.getItem("userToken");
+
+      const { data: robot } = await axios.post(crearUrl, createrobot, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (robot.error) {
         dispatch(actualizarErrorAction(robot));
       } else {
@@ -44,8 +48,12 @@ export const crearRobotThunk = (createrobot) => {
 
 export const borrarRobotThunk = (idRobot) => {
   return async (dispatch) => {
+    const token = localStorage.getItem("userToken");
+
     const crearUrl = `${urlApi}delete/${idRobot}`;
-    const { data } = await axios.delete(crearUrl);
+    const { data } = await axios.delete(crearUrl, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     if (data.error) {
       dispatch(actualizarErrorAction(data));
@@ -60,7 +68,15 @@ export const editarRobotThunk = (editarRobot) => {
   return async (dispatch) => {
     const crearUrl = `${urlApi}update`;
     try {
-      const { data: robotActualizado } = await axios.put(crearUrl, editarRobot);
+      const token = localStorage.getItem("userToken");
+
+      const { data: robotActualizado } = await axios.put(
+        crearUrl,
+        editarRobot,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (robotActualizado.error) {
         dispatch(actualizarErrorAction(robotActualizado));
